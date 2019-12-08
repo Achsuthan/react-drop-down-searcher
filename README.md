@@ -15,7 +15,7 @@ npm i react-drop-down-searcher
 ```
 
 ### Website 
-[Demo](https://github.com/Achsuthan/React-drop-down-searcher/blob/master/LICENSE)
+[Demo](https://npmplugins.firebaseapp.com)
 
 
 ### Usage
