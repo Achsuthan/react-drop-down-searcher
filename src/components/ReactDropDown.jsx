@@ -65,7 +65,8 @@ const DropdownMultiple = ({
 
   const renderDropDownFn = list => {
     return (
-      <ul
+      <div>
+        <ul
         className="dd-list"
         onClick={e => e.stopPropagation()}
         onMouseEnter={() => {
@@ -78,6 +79,7 @@ const DropdownMultiple = ({
         {list.map((item, index) => renderDropDownSelectedItem(item, index))}
       </ul>
     );
+      </div>
   };
 
   const selectedClassname = item => {
