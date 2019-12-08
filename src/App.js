@@ -50,6 +50,10 @@ function App() {
           handleInputChange={val => handleInputChange(val)}
         />
 
+        <br/>
+        <br/>
+        <br/>
+
         <p>Multi Select Dropdown</p>
         <ReactDropDown
           placeholder="Dropdown..."
