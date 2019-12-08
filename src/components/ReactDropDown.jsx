@@ -139,7 +139,7 @@ const DropdownMultiple = ({
             window.addEventListener("mousedown", close);
           }}
         >
-          <label>
+          <label style={{marginTop: "5px"}}>
             <ul style={styles}>
               {internalSelectedList.map((item, i) => (
                 <li key={i} style={styles.items} onClick={handleRemoveItem(i)}>
