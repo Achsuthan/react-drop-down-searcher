@@ -1,4 +1,8 @@
+
+// webpack.config.js
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: './src/components/ReactDropDown.jsx',
   output: {
@@ -18,7 +22,16 @@ module.exports = {
             presets: ['env']
           }
         }
-      }
+      }, {
+        test: /\.*css$/,
+        use : ExtractTextPlugin.extract({
+            fallback : 'style-loader',
+            use : [
+                'css-loader',
+                'sass-loader'
+            ]
+        })
+       },
     ]
   },
   externals: {

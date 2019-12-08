@@ -65,22 +65,21 @@ const DropdownMultiple = ({
 
   const renderDropDownFn = list => {
     return (
-      <div>
+      <React.Fragment>
         <ul
-        className="dd-list"
-        onClick={e => e.stopPropagation()}
-        onMouseEnter={() => {
-          window.removeEventListener("mousedown", close);
-        }}
-        onMouseLeave={() => {
-          window.addEventListener("mousedown", close);
-        }}
-      >
-        {list.map((item, index) => renderDropDownSelectedItem(item, index))}
-      </ul>
-      </div>
+          className="dd-list"
+          onClick={e => e.stopPropagation()}
+          onMouseEnter={() => {
+            window.removeEventListener("mousedown", close);
+          }}
+          onMouseLeave={() => {
+            window.addEventListener("mousedown", close);
+          }}
+        >
+          {list.map((item, index) => renderDropDownSelectedItem(item, index))}
+        </ul>
+      </React.Fragment>
     );
-      
   };
 
   const selectedClassname = item => {
@@ -91,17 +90,19 @@ const DropdownMultiple = ({
 
   const renderDropDownSelectedItem = (item, index) => {
     return (
-      <li
-        className={
-          selectedClassname(item) ? "dd-list-item selected" : "dd-list-item"
-        }
-        key={index}
-        onClick={() => {
-          dropDownSelectedItem(item);
-        }}
-      >
-        {item[labelName]}
-      </li>
+      <React.Fragment>
+        <li
+          className={
+            selectedClassname(item) ? "dd-list-item selected" : "dd-list-item"
+          }
+          key={index}
+          onClick={() => {
+            dropDownSelectedItem(item);
+          }}
+        >
+          {item[labelName]}
+        </li>
+      </React.Fragment>
     );
   };
 
@@ -130,40 +131,48 @@ const DropdownMultiple = ({
   };
 
   return (
-    <div className="col-12">
-      <div className="dd-wrapper">
-        <div
-          className="dd-header"
-          onClick={() => toggleList()}
-          onMouseEnter={() => {
-            window.removeEventListener("mousedown", close);
-          }}
-          onMouseLeave={() => {
-            window.addEventListener("mousedown", close);
-          }}
-        >
-          <label style={{marginTop: "5px"}}>
-            <ul style={styles}>
-              {internalSelectedList.map((item, i) => (
-                <li key={i} style={styles.items} onClick={handleRemoveItem(i)}>
-                  {item[selectedlabelName]}
-                  <span style={{ paddingLeft: "5px", color: "white" }}>X</span>
-                </li>
-              ))}
+    <React.Fragment>
+      <div className="col-12">
+        <div className="dd-wrapper">
+          <div
+            className="dd-header"
+            onClick={() => toggleList()}
+            onMouseEnter={() => {
+              window.removeEventListener("mousedown", close);
+            }}
+            onMouseLeave={() => {
+              window.addEventListener("mousedown", close);
+            }}
+          >
+            <label style={{ marginTop: "5px" }}>
+              <ul style={styles}>
+                {internalSelectedList.map((item, i) => (
+                  <li
+                    key={i}
+                    style={styles.items}
+                    onClick={handleRemoveItem(i)}
+                  >
+                    {item[selectedlabelName]}
+                    <span style={{ paddingLeft: "5px", color: "white" }}>
+                      X
+                    </span>
+                  </li>
+                ))}
 
-              <input
-                className="col-12 dd-header dd-wrapper"
-                placeholder={placeholder}
-                style={styles.input}
-                value={input}
-                onChange={handleInputChange}
-              />
-            </ul>
-          </label>
+                <input
+                  className="col-12 dd-header dd-wrapper"
+                  placeholder={placeholder}
+                  style={styles.input}
+                  value={input}
+                  onChange={handleInputChange}
+                />
+              </ul>
+            </label>
+          </div>
+          {listOpen ? renderDropDownFn(list) : null}
         </div>
-        {listOpen ? renderDropDownFn(list) : null}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
