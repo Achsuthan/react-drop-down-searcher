@@ -2,7 +2,7 @@
   "name": "react-drop-down-searcher",
   "version": "1.0.2",
   "author": "Achsuthan Mahendran <achsuthan@icloud.com>",
-  "main": "./src/components/ReactDropDown.jsx",
+  "main": "./lib/components/ReactDropDown.jsx",
   "keywords": [
     "react",
     "react component",
