@@ -1,9 +1,9 @@
 var path = require('path');
 module.exports = {
-  entry: './src/components/ReactDropDown.js',
+  entry: './src/components/ReactDropDown.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'ReactDropDown.js',
+    filename: 'ReactDropDown.jsx',
     libraryTarget: 'commonjs2'
   },
   module: {
