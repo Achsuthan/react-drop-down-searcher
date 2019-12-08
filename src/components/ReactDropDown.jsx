@@ -65,7 +65,7 @@ const DropdownMultiple = ({
 
   const renderDropDownFn = list => {
     return (
-      <React.Fragment>
+      <div>
         <ul
           className="dd-list"
           onClick={e => e.stopPropagation()}
@@ -78,7 +78,7 @@ const DropdownMultiple = ({
         >
           {list.map((item, index) => renderDropDownSelectedItem(item, index))}
         </ul>
-      </React.Fragment>
+      </div>
     );
   };
 
@@ -90,7 +90,7 @@ const DropdownMultiple = ({
 
   const renderDropDownSelectedItem = (item, index) => {
     return (
-      <React.Fragment>
+      <div>
         <li
           className={
             selectedClassname(item) ? "dd-list-item selected" : "dd-list-item"
@@ -102,7 +102,7 @@ const DropdownMultiple = ({
         >
           {item[labelName]}
         </li>
-      </React.Fragment>
+      </div>
     );
   };
 
@@ -131,7 +131,7 @@ const DropdownMultiple = ({
   };
 
   return (
-    <React.Fragment>
+    <div>
       <div className="col-12">
         <div className="dd-wrapper">
           <div
@@ -172,7 +172,7 @@ const DropdownMultiple = ({
           {listOpen ? renderDropDownFn(list) : null}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

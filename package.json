@@ -12,20 +12,17 @@
     "single select",
     "api dropdown"
   ],
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Achsuthan/React-drop-down-searcher.git"
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/preset-react": "^7.7.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-loader": "^8.0.6",
     "bootstrap": "^4.4.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "react": "^16.12.0",
@@ -37,8 +34,7 @@
     "start": "react-scripts start",
     "build": "webpack",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "publish:npm": "rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
