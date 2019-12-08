@@ -176,4 +176,4 @@ const DropdownMultiple = ({
   );
 };
 
-export default DropdownMultiple;
+moudle.export  ={DropdownMultiple}
