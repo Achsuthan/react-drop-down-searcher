@@ -78,8 +78,9 @@ const DropdownMultiple = ({
       >
         {list.map((item, index) => renderDropDownSelectedItem(item, index))}
       </ul>
-    );
       </div>
+    );
+      
   };
 
   const selectedClassname = item => {
