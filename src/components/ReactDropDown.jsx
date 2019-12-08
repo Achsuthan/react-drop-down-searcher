@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/global.css";
 
 const DropdownMultiple = ({
-  headerTitle = "",
+  placeholder = "Search",
   isSingle = false,
   labelName = "title",
   selectedList = [],
@@ -11,13 +11,22 @@ const DropdownMultiple = ({
   list = [],
   inputChanged = {}
 }) => {
-
   const [listOpen, setListOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [internalSelectedList, setInternanSelectedList] = useState([]);
+
+  useEffect(() => {
+    let tmpSelectedList = [];
+    tmpSelectedList = [...internalSelectedList];
+    tmpSelectedList = tmpSelectedList.concat(selectedList);
+    if (tmpSelectedList.length > 0) {
+      setInternanSelectedList(new Set(tmpSelectedList));
+    }
+  }, []);
 
   const close = timeOut => {
     setListOpen(false);
-    window.removeEventListener("mousedown", close)
+    window.removeEventListener("mousedown", close);
   };
 
   const toggleList = () => {
@@ -32,25 +41,49 @@ const DropdownMultiple = ({
 
   const handleRemoveItem = index => {
     return () => {
-      toggleItem(selectedList.filter((item, i) => i !== index));
+      let tmpArray = internalSelectedList.filter((item, i) => i !== index);
+      setInternanSelectedList(tmpArray);
+      toggleItem(tmpArray);
     };
+  };
+
+  const dropDownSelectedItem = item => {
+    let totalSelectedItem = [...internalSelectedList];
+    if (isSingle) {
+      totalSelectedItem = [item];
+      setInternanSelectedList(totalSelectedItem);
+    } else if (!selectedClassname(item)) {
+      totalSelectedItem.push(item);
+      setInternanSelectedList(totalSelectedItem);
+    } else {
+      totalSelectedItem.splice(totalSelectedItem.indexOf(item), 1);
+      setInternanSelectedList(totalSelectedItem);
+    }
+    setInput("");
+    toggleItem(totalSelectedItem);
   };
 
   const renderDropDownFn = list => {
     return (
-      <ul className="dd-list" onClick={e => e.stopPropagation()} onMouseEnter ={()=>{
-        window.removeEventListener("mousedown", close);
-      }}
-      onMouseLeave={()=>{
-        window.addEventListener("mousedown", close);
-      }}>
+      <ul
+        className="dd-list"
+        onClick={e => e.stopPropagation()}
+        onMouseEnter={() => {
+          window.removeEventListener("mousedown", close);
+        }}
+        onMouseLeave={() => {
+          window.addEventListener("mousedown", close);
+        }}
+      >
         {list.map((item, index) => renderDropDownSelectedItem(item, index))}
       </ul>
     );
   };
 
   const selectedClassname = item => {
-    return selectedList.some(list => list[labelName] == item[labelName]);
+    return internalSelectedList.some(
+      list => list[labelName] == item[labelName]
+    );
   };
 
   const renderDropDownSelectedItem = (item, index) => {
@@ -61,14 +94,7 @@ const DropdownMultiple = ({
         }
         key={index}
         onClick={() => {
-          let totalSelectedItem = selectedList;
-          isSingle
-            ? (totalSelectedItem = [item])
-            : !selectedClassname(item)
-            ? totalSelectedItem.push(item)
-            : totalSelectedItem.splice(totalSelectedItem.indexOf(item), 1);
-          setInput("");
-          toggleItem(totalSelectedItem);
+          dropDownSelectedItem(item);
         }}
       >
         {item[labelName]}
@@ -103,26 +129,28 @@ const DropdownMultiple = ({
   return (
     <div className="col-12">
       <div className="dd-wrapper">
-        <div className="dd-header" onClick={() => toggleList()} onMouseEnter ={()=>{
-        window.removeEventListener("mousedown", close);
-      }}
-      onMouseLeave={()=>{
-        window.addEventListener("mousedown", close);
-      }}>
+        <div
+          className="dd-header"
+          onClick={() => toggleList()}
+          onMouseEnter={() => {
+            window.removeEventListener("mousedown", close);
+          }}
+          onMouseLeave={() => {
+            window.addEventListener("mousedown", close);
+          }}
+        >
           <label>
             <ul style={styles}>
-              {selectedList.map((item, i) => (
+              {internalSelectedList.map((item, i) => (
                 <li key={i} style={styles.items} onClick={handleRemoveItem(i)}>
                   {item[selectedlabelName]}
-                  <span style={{ paddingLeft: "5px", color: "white" }}>
-                   X
-                  </span>
+                  <span style={{ paddingLeft: "5px", color: "white" }}>X</span>
                 </li>
               ))}
 
               <input
-                className="form-control dd-header dd-wrapper"
-                placeholder={headerTitle}
+                className="col-12 dd-header dd-wrapper"
+                placeholder={placeholder}
                 style={styles.input}
                 value={input}
                 onChange={handleInputChange}
@@ -130,7 +158,7 @@ const DropdownMultiple = ({
             </ul>
           </label>
         </div>
-        {listOpen && renderDropDownFn(list)}
+        {listOpen ? renderDropDownFn(list) : null}
       </div>
     </div>
   );
