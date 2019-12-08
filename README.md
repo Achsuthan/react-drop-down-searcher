@@ -41,15 +41,15 @@ Component Props
 | ------ | ------ | ------ | ----- |
 | list | ArrayObject | [] | These array values will show in the dropdown |
 | placeholder | String | Search | Input field placeholder   |
-| isSingle | bool | false | if true, only one value can be selected form dropdown otherwise multi dropdown select   |
-| labelName | String | title | This value used to show which value from object in the dropdown |
-| selectedlabelName | String | title | from which value need to show in the taginput |
+| isSingle | bool | false | if true, only one value can be selected from dropdown otherwise multi value can be selected dropdown    |
+| labelName | String | title | This value used to show which value is from the object in dropdown |
+| selectedlabelName | String | title | From which value from the object need to show in the taginput |
 | selectedList | ArrayOBject | [] | If values set, it will show those values as tag input |
 
 
 ### Callback props
 
->by using renderer props to override components some of the functionality will have to be >handled manually with a help of internal props, states and methods exposed
+>by using render props to override components some of the functionality will have to be >handled manually with a help of internal props, states and methods exposed
 
 | Prop | Type | Default | Description |
 | ------ | ------ | ------ | ----- |
