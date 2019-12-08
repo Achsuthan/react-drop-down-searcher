@@ -17,7 +17,7 @@
     "url": "https://github.com/Achsuthan/React-drop-down-searcher.git"
   },
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@babel/preset-react": "^7.7.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
