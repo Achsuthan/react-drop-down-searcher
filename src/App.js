@@ -30,16 +30,15 @@ function App() {
   const toggleItem = val => {
     setSelectedItem(val);
   };
-  const handleInputChange= (val)=>{
-
-  }
+  const handleInputChange = val => {};
 
   return (
     <div className="container">
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       <div>
+        <p>Single Select Dropdown</p>
         <ReactDropDown
           placeholder="Dropdown..."
           isSingle={true}
@@ -48,7 +47,19 @@ function App() {
           selectedList={selectedItem}
           selectedlabelName="name"
           toggleItem={val => toggleItem(val)}
-          handleInputChange= {(val)=>handleInputChange(val)}
+          handleInputChange={val => handleInputChange(val)}
+        />
+
+        <p>Multi Select Dropdown</p>
+        <ReactDropDown
+          placeholder="Dropdown..."
+          isSingle={true}
+          list={list}
+          labelName="name"
+          selectedList={selectedItem}
+          selectedlabelName="name"
+          toggleItem={val => toggleItem(val)}
+          handleInputChange={val => handleInputChange(val)}
         />
       </div>
     </div>
