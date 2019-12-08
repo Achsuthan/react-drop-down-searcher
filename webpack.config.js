@@ -1,21 +1,39 @@
+// webpack.config.js
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
-    entry: './src/ReactDropDown.jsx',
-    output: {
-        path: path.resolve('lib'),
-        filename: 'ReactDropDown.js',
-        libraryTarget: 'commonjs2'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules)/,
-                use: 'babel-loader'
-            },
-            { test: /\.txt$/, use: 'raw-loader' }
-        ]
-    }
-}
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
+    libraryTarget: 'commonjs2'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /(node_modules|bower_components|build)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      }, {
+        test: /\.*css$/,
+        use : ExtractTextPlugin.extract({
+            fallback : 'style-loader',
+            use : [
+                'css-loader',
+                'sass-loader'
+            ]
+        })
+       },
+    ]
+  },
+  externals: {
+    'react': 'commonjs react' 
+  }
+};
