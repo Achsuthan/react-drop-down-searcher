@@ -1,8 +1,8 @@
 {
   "name": "react-drop-down-searcher",
-  "version": "1.0.23",
+  "version": "1.0.0",
   "author": "Achsuthan Mahendran <achsuthan@icloud.com>",
-  "main": "dist/build.js",
+  "main": "./dist/ReactDropDown.js",
   "keywords": [
     "react",
     "react component",
@@ -17,23 +17,21 @@
     "url": "https://github.com/Achsuthan/React-drop-down-searcher.git"
   },
   "license": "MIT",
-  "peerDependencies": {
-    "@babel/preset-react": "^7.7.4",
+  "private": false,
+  "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "babel-loader": "^8.0.6",
-    "bootstrap": "^4.4.1",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,15 +49,12 @@
     ]
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "path": "^0.12.7",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^3.2.1"
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-react": "^7.8.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   }
 }

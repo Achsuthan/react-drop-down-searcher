@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import ReactDropDown from "./components/ReactDropDown";
 
 function App() {
-  const [selectedItem, setSelectedItem] = useState([]);
   const list = [
     {
       name: "End Game",
@@ -27,10 +25,41 @@ function App() {
       value: "Jorker"
     }
   ];
-  const toggleItem = val => {
-    setSelectedItem(val);
+
+  const [singleSearchKey, setSingleSearchKey] = useState("");
+  const [singleSelectedValue, setSingleSelectedValue] = useState([]);
+  const [multiSearchKey, setMultiSearchKey] = useState("");
+  const [multiSelectedValue, setMultiSelectedValue] = useState([]);
+  const toggleItem = (val, isSingle) => {
+    if (isSingle) {
+      setSingleSelectedValue(val);
+    } else {
+      setMultiSelectedValue(val);
+    }
   };
-  const handleInputChange = val => {};
+  const handleInputChange = (val, isSingle) => {
+    if (isSingle) {
+      setSingleSearchKey(val);
+    } else {
+      setMultiSearchKey(val);
+    }
+  };
+
+  const setUpSingleSelectedItem = () => {
+    return singleSelectedValue.map((val, index)=>(
+      <div key={index}>
+        {index + 1} . {val.name}
+      </div>
+    ))
+  };
+
+  const setUpMultipleSelectedItem = () => {
+    return multiSelectedValue.map((val, index)=>(
+      <div key={index}>
+        {index + 1} {val.name}
+      </div>
+    ))
+  };
 
   return (
     <div className="container">
@@ -44,27 +73,32 @@ function App() {
           isSingle={true}
           list={list}
           labelName="name"
-          selectedList={selectedItem}
+          selectedList={singleSelectedValue}
           selectedlabelName="name"
-          toggleItem={val => toggleItem(val)}
-          handleInputChange={val => handleInputChange(val)}
+          toggleItem={val => toggleItem(val, true)}
+          inputChanged={val => handleInputChange(val, true)}
         />
-
-        <br/>
-        <br/>
-        <br/>
+        <span>Searched Key : {singleSearchKey}</span>
+        <br />
+        {setUpSingleSelectedItem()}
+        <br />
+        <br />
+        <br />
 
         <p>Multi Select Dropdown</p>
         <ReactDropDown
           placeholder="Dropdown..."
-          isSingle={true}
+          isSingle={false}
           list={list}
           labelName="name"
-          selectedList={selectedItem}
+          selectedList={multiSelectedValue}
           selectedlabelName="name"
-          toggleItem={val => toggleItem(val)}
-          handleInputChange={val => handleInputChange(val)}
+          toggleItem={val => toggleItem(val, false)}
+          inputChanged={val => handleInputChange(val, false)}
         />
+        <span>Searched Key : {multiSearchKey}</span>
+        <br/>
+        {setUpMultipleSelectedItem()}
       </div>
     </div>
   );
