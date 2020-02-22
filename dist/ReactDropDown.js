@@ -79,11 +79,13 @@ const DropdownMultiple = ({
   };
 
   const selectedClassname = item => {
-    return internalSelectedList.some(list => list[labelName] == item[labelName]);
+    return internalSelectedList.some(list => list[labelName].toUpperCase() === item[labelName].toUpperCase());
   };
 
   const renderDropDownSelectedItem = (item, index) => {
-    return React.createElement("div", null, React.createElement("li", {
+    return React.createElement("div", {
+      key: index
+    }, React.createElement("li", {
       className: selectedClassname(item) ? "dd-list-item selected" : "dd-list-item",
       key: index,
       onClick: () => {
