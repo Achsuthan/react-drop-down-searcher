@@ -32,7 +32,7 @@ import DropDown from "react-drop-down-searcher";
 and use as
 
 ```sh
-<ReactDropDown list={list} selectedList={selectedItem} toggleItem={val => toggleItem(val)} handleInputChange= {(val)=>handleInputChange(val)}/>
+<DropDown list={list} selectedList={selectedItem} toggleItem={val => toggleItem(val)} handleInputChange= {(val)=>handleInputChange(val)}/>
 ```
 
 ### API
