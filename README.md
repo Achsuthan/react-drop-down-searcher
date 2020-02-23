@@ -18,7 +18,8 @@ npm i react-drop-down-searcher
 ### Website
 
 [Demo](https://npmplugins.firebaseapp.com)
-[NPM Link](https://www.npmjs.com/package/react-drop-down-searcher)
+<br/>
+[Npm Link](https://www.npmjs.com/package/react-drop-down-searcher)
 
 ### Usage
 
