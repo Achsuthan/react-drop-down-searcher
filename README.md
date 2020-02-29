@@ -9,6 +9,8 @@ Customisable dropdown select for react
 - Auto position
 - Small bundle size
 
+### &#x1F534; Whats New 
+
 ### Installation
 
 ```sh
