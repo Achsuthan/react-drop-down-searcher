@@ -24,12 +24,33 @@ const DropdownMultiple = ({
     if (tmpSelectedList.length > 0) {
       setInternanSelectedList(new Set(tmpSelectedList));
     }
+  }, []);
+
+  useEffect(()=>{
     setInternalList(list)
+  },[list])
+
+  useEffect(()=>{
     if(searchKey){
       changeListValueBasedOnSearch(searchKey)
       setInput(searchKey)
     }
-  }, []);
+  },[searchKey])
+
+  const changeListValueBasedOnSearch = (value) => {
+    if (value) {
+      let tmpArray = []
+      list.filter(val => {
+        if (val.name.toUpperCase().includes(value.toUpperCase())) {
+          tmpArray = [...tmpArray , val]
+        }
+      })
+      setInternalList(tmpArray)
+    }
+    else {
+      setInternalList(list)
+    }
+  }
 
   const close = timeOut => {
     setListOpen(false);
@@ -40,18 +61,7 @@ const DropdownMultiple = ({
     setListOpen(!listOpen);
   };
 
-  const changeListValueBasedOnSearch = (value) => {
-    if (value) {
-      setInternalList([...list.filter(val => {
-        if (val.name.toUpperCase().includes(value.toUpperCase())) {
-          return val
-        }
-      })])
-    }
-    else {
-      setInternalList(list)
-    }
-  }
+  
 
   const handleInputChange = evt => {
     let inputValue = evt.target.value
