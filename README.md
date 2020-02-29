@@ -76,10 +76,13 @@ Component Props
   ![alt text](https://firebasestorage.googleapis.com/v0/b/npmplugins.appspot.com/o/singleSelect.png?alt=media&token=48f4424e-3e05-4587-972e-66ec597261d0)
 - Multi Dropdown
   ![alt text](https://firebasestorage.googleapis.com/v0/b/npmplugins.appspot.com/o/multiSelect.png?alt=media&token=4f04b082-deaa-4647-bc94-23c0d8b8772d)
-  License
-  [MIT](https://github.com/Achsuthan/React-drop-down-searcher/blob/master/LICENSE)
+  
 
   <h3>Demo Gif</h3>
 <img src="./screenshots/demo.gif"/>
 <hr>
 <a href = "mailto: achsuthan@icloud.com">Contact Me</a>
+
+
+License
+  [MIT](https://github.com/Achsuthan/React-drop-down-searcher/blob/master/LICENSE)
