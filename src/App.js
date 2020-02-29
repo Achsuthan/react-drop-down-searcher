@@ -77,6 +77,7 @@ function App() {
           selectedlabelName="name"
           toggleItem={val => toggleItem(val, true)}
           inputChanged={val => handleInputChange(val, true)}
+          searchKey={singleSearchKey}
         />
         <span>Searched Key : {singleSearchKey}</span>
         <br />
@@ -95,6 +96,7 @@ function App() {
           selectedlabelName="name"
           toggleItem={val => toggleItem(val, false)}
           inputChanged={val => handleInputChange(val, false)}
+          searchKey={multiSearchKey}
         />
         <span>Searched Key : {multiSearchKey}</span>
         <br/>
