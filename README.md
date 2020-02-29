@@ -2,6 +2,8 @@
 
 Customisable dropdown select for react
 
+<img src="https://badge.fury.io/js/react-drop-down-searcher.svg" alt="version badge">
+
 ### &#x1F53A; Whats New
 
 - Search porps added 
