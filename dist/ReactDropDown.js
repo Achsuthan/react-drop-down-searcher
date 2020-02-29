@@ -9,11 +9,13 @@ const DropdownMultiple = ({
   selectedlabelName = "title",
   toggleItem = {},
   list = [],
-  inputChanged = {}
+  inputChanged = {},
+  searchKey = ""
 }) => {
   const [listOpen, setListOpen] = useState(false);
   const [input, setInput] = useState("");
   const [internalSelectedList, setInternanSelectedList] = useState([]);
+  const [internalList, setInternalList] = useState([]);
   useEffect(() => {
     let tmpSelectedList = [];
     tmpSelectedList = [...internalSelectedList];
@@ -23,6 +25,29 @@ const DropdownMultiple = ({
       setInternanSelectedList(new Set(tmpSelectedList));
     }
   }, []);
+  useEffect(() => {
+    setInternalList(list);
+  }, [list]);
+  useEffect(() => {
+    if (searchKey) {
+      changeListValueBasedOnSearch(searchKey);
+      setInput(searchKey);
+    }
+  }, [searchKey]);
+
+  const changeListValueBasedOnSearch = value => {
+    if (value) {
+      let tmpArray = [];
+      list.filter(val => {
+        if (val.name.toUpperCase().includes(value.toUpperCase())) {
+          tmpArray = [...tmpArray, val];
+        }
+      });
+      setInternalList(tmpArray);
+    } else {
+      setInternalList(list);
+    }
+  };
 
   const close = timeOut => {
     setListOpen(false);
@@ -34,9 +59,11 @@ const DropdownMultiple = ({
   };
 
   const handleInputChange = evt => {
+    let inputValue = evt.target.value;
+    changeListValueBasedOnSearch(inputValue);
     setListOpen(true);
-    setInput(evt.target.value.toUpperCase());
-    inputChanged(evt.target.value.toUpperCase());
+    setInput(inputValue);
+    inputChanged(inputValue);
   };
 
   const handleRemoveItem = index => {
@@ -62,10 +89,11 @@ const DropdownMultiple = ({
     }
 
     setInput("");
+    changeListValueBasedOnSearch("");
     toggleItem(totalSelectedItem);
   };
 
-  const renderDropDownFn = list => {
+  const renderDropDownFn = internalList => {
     return React.createElement("div", null, React.createElement("ul", {
       className: "dd-list",
       onClick: e => e.stopPropagation(),
@@ -75,11 +103,11 @@ const DropdownMultiple = ({
       onMouseLeave: () => {
         window.addEventListener("mousedown", close);
       }
-    }, list.map((item, index) => renderDropDownSelectedItem(item, index))));
+    }, internalList.map((item, index) => renderDropDownSelectedItem(item, index))));
   };
 
   const selectedClassname = item => {
-    return internalSelectedList.some(list => list[labelName].toUpperCase() === item[labelName].toUpperCase());
+    return internalSelectedList.some(internalList => internalList[labelName].toUpperCase() === item[labelName].toUpperCase());
   };
 
   const renderDropDownSelectedItem = (item, index) => {
@@ -149,7 +177,7 @@ const DropdownMultiple = ({
     style: styles.input,
     value: input,
     onChange: handleInputChange
-  })))), listOpen ? renderDropDownFn(list) : null)));
+  })))), listOpen ? renderDropDownFn(internalList) : null)));
 };
 
 export default DropdownMultiple;
