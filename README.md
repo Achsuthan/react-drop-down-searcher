@@ -2,18 +2,18 @@
 
 Customisable dropdown select for react
 
+### &#x1F53A; Whats New
+
+- Search porps added 
+- Search filter added 
+- InputChanged Call back pros uppercase removed 
+
 ### Features
 
 - Configurable via props
 - Plugin is supportable for mouse outside click
 - Auto position
 - Small bundle size
-
-### &#x1F53A; Whats New
-
-- Search porps added 
-- Search filter added 
-- InputChanged Call back pros uppercase removed 
 
 ### Installation
 
@@ -48,7 +48,8 @@ Component Props
 | Prop              | Type        | Default | Description                                                                                          |
 | ----------------- | ----------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | list              | ArrayObject | []      | These array values will show in the dropdown                                                         |
-| placeholder       | String      | Search  | Input field placeholder                                                                              |
+| placeholder       | String      | Search  | Input field placeholder                                               
+| searchKey       | String      | Empty  | Search Key for filter dropdown                                             |
 | isSingle          | bool        | false   | if true, only one value can be selected from dropdown otherwise multi value can be selected dropdown |
 | labelName         | String      | title   | This value used to show which value is from the object in dropdown                                   |
 | selectedlabelName | String      | title   | From which value from the object need to show in the taginput                                        |
