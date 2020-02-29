@@ -9,7 +9,11 @@ Customisable dropdown select for react
 - Auto position
 - Small bundle size
 
-### &#x1F534; Whats New 
+### &#x1F53A; Whats New
+
+- Search porps added 
+- Search filter added 
+- InputChanged Call back pros uppercase removed 
 
 ### Installation
 
