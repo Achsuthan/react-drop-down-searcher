@@ -10,7 +10,7 @@ Customisable dropdown select for react
 
 - Search Prop added 
 - Search filter added 
-- InputChanged Call back pros uppercase removed 
+- InputChanged Call back prop uppercase removed 
 
 ### Features
 
