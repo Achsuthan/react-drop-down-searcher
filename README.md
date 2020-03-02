@@ -8,7 +8,7 @@ Customisable dropdown select for react
 
 ### &#x1F53A; Whats New
 
-- Search porps added 
+- Search Prop added 
 - Search filter added 
 - InputChanged Call back pros uppercase removed 
 
