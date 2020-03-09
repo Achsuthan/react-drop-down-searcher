@@ -10,7 +10,9 @@ const DropdownMultiple = ({
   toggleItem = {},
   list = [],
   inputChanged = {},
-  searchKey = ""
+  searchKey = "",
+  tagColor = "#0074D9",
+  selectedDropdownColor = "#0074D9"
 }) => {
   const [listOpen, setListOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -39,7 +41,7 @@ const DropdownMultiple = ({
     if (value) {
       let tmpArray = [];
       list.filter(val => {
-        if (val.name.toUpperCase().includes(value.toUpperCase())) {
+        if (val[labelName].toUpperCase().includes(value.toUpperCase())) {
           tmpArray = [...tmpArray, val];
         }
       });
@@ -115,6 +117,7 @@ const DropdownMultiple = ({
       key: index
     }, React.createElement("li", {
       className: selectedClassname(item) ? "dd-list-item selected" : "dd-list-item",
+      style: selectedClassname(item) ? seletedBackgroundColor : {},
       key: index,
       onClick: () => {
         dropDownSelectedItem(item);
@@ -122,6 +125,9 @@ const DropdownMultiple = ({
     }, item[labelName]));
   };
 
+  const seletedBackgroundColor = {
+    backgroundColor: selectedDropdownColor
+  };
   const styles = {
     container: {
       padding: "2px",
@@ -131,8 +137,8 @@ const DropdownMultiple = ({
       color: "white",
       display: "inline-block",
       padding: "2px",
-      border: "1px solid #0074D9",
-      backgroundColor: "#0074D9",
+      border: `1px solid ${tagColor}`,
+      backgroundColor: tagColor,
       borderRadius: "5px",
       margin: "5px",
       cursor: "pointer"

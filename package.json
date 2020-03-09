@@ -1,6 +1,6 @@
 {
   "name": "react-drop-down-searcher",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Achsuthan Mahendran <achsuthan@icloud.com>",
   "main": "./dist/ReactDropDown.js",
   "keywords": [
