@@ -58,7 +58,7 @@ Component Props
 | selectedlabelName | String      | title   | From which value from the object need to show in the taginput                                        |
 | selectedList      | ArrayOBject | []      | If values set, it will show those values as tag input                                                |
 | tagColor      | String | #0074D9      |  This color is used to set the background color to selected dropdown value in the text input                                                |
-| selectedDropdownColor      | String | #0074D9      | this color is used to set the background color to selected dropdown in dropdown                                                |
+| selectedDropdownColor      | String | #0074D9      | This color is used to set the background color to selected index in dropdown                                                |
 ### Callback props
 
 > by using render props to override components some of the functionality will have to be >handled manually with a help of internal props, states and methods exposed
